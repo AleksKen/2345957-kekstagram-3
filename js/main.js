@@ -1,9 +1,7 @@
 function getRandomInt(min, max) {
-  if (max < min) {
-    return false;
-  } else {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
+  const lower = Math.ceil(Math.min(Math.abs(min), Math.abs(max)));
+  const upper = Math.floor(Math.max(Math.abs(min), Math.abs(max)));
+  return Math.floor(Math.random() * (upper - lower + 1) + lower);
 }
 getRandomInt(0, 100);
 
