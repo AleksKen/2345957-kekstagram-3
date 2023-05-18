@@ -64,6 +64,7 @@ const resetEffect = () => {
   }
   sliderBarField.hidden = true;
   previousEffect = undefined;
+  imgElement.style.scale = 1;
   document.querySelector('#effect-none').checked = true;
 };
 
