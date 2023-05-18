@@ -1,7 +1,7 @@
 import {renderingThumbnail} from './render.js';
 import {checkError} from './until.js';
 import {isFail, isSuccess} from './check.js';
-import {closeWindow} from './form.js';
+import {closeWindow, initForm} from './form.js';
 
 const getPicturesFromServer = () => {
   fetch('https://27.javascript.pages.academy/kekstagram-simple/data')
@@ -12,6 +12,7 @@ const getPicturesFromServer = () => {
     })
     .then((response) => renderingThumbnail(response))
     .catch(() => checkError('Ошибка подгрузки изображений!'));
+  initForm();
 };
 
 

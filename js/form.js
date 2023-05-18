@@ -1,5 +1,5 @@
 import {isESC} from './until.js';
-import {resetEffect} from './effects.js';
+import {initEffect, resetEffect} from './effects.js';
 
 const inputPicture = document.querySelector('#upload-file');
 const buttonCancel = document.querySelector('#upload-cancel');
@@ -10,9 +10,6 @@ const openWindow = () => {
   document.addEventListener('keydown', closeOnButton);
 };
 
-inputPicture.addEventListener('change', () => {
-  openWindow();
-});
 
 const cleanForm = () => {
   inputPicture.value = '';
@@ -31,6 +28,16 @@ const closeWindow = (needToClean) => {
   }
 };
 
+const initForm =() =>{
+  inputPicture.addEventListener('change', () => {
+    openWindow();
+  });
+  buttonCancel.addEventListener('click', () => {
+    closeWindow(true);
+  });
+  initEffect();
+};
+
 function closeOnButton(evt) {
   if (isESC(evt)) {
     evt.preventDefault();
@@ -38,8 +45,4 @@ function closeOnButton(evt) {
   }
 }
 
-buttonCancel.addEventListener('click', () => {
-  closeWindow(true);
-});
-
-export {closeWindow, openWindow};
+export {closeWindow, openWindow, initForm};
